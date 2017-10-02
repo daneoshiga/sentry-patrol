@@ -1,8 +1,9 @@
 from simple_rest_client.api import API
 
-from sentry_api_client import resource
+from ..sentry_api_client import resource
 
-def get_api_instance(token='', timeout=50):
+
+def get_api_instance(token='', timeout=None):
     headers = {
         'Authorization': 'Bearer {}'.format(token),
         'Content-Type': 'application/json',
@@ -15,6 +16,5 @@ def get_api_instance(token='', timeout=50):
     )
 
     api.add_resource(resource_name='project_events', resource_class=resource.ProjectEvents)
-    api.add_resource(resource_name='async_project_events', resource_class=resource.AsyncProjectEvents)
 
     return api

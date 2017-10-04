@@ -17,8 +17,8 @@ Setup
 Example
 ~~~~~~~
 
-This will list all events of a specific project
+For a list of commands and options, check the help output with:
 
 .. code:: bash
 
-    patrol events <organization> <project>
+    patrol --help

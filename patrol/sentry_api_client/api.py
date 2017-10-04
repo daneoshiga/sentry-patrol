@@ -16,5 +16,6 @@ def get_api_instance(token='', timeout=None):
     )
 
     api.add_resource(resource_name='project_events', resource_class=resource.ProjectEvents)
+    api.add_resource(resource_name='project_issues', resource_class=resource.ProjectIssues)
 
     return api

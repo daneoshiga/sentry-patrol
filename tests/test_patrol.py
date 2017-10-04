@@ -16,3 +16,10 @@ def test_events(patrol):
     patrol.events = events_mock
     patrol.events('organization', 'project')
     assert events_mock.called
+
+
+def test_issues(patrol):
+    issues_mock = mock.Mock()
+    patrol.issues = issues_mock
+    patrol.issues('organization', 'project')
+    assert issues_mock.called

@@ -13,3 +13,4 @@ ipdb = "*"
 
 "simple-rest-client" = "*"
 prettyconf = "*"
+click = "*"

@@ -1,4 +1,5 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+
 
 setup(
     name='sentry-patrol',
@@ -8,6 +9,23 @@ setup(
     author='Danilo Shiga',
     author_email='daniloshiga@gmail.com',
     license='MIT',
-    packages=['patrol'],
     zip_safe=False,
+    packages=find_packages(exclude=['docs', 'tests', 'tests.*', 'Pipfile*']),
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Environment :: Console',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 3 :: Only',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Topic :: System :: Distributed Computing',
+    ],
+    keywords='sentry cli patrol',
+    entry_points='''
+        [console_scripts]
+        patrol=patrol.cli:cli
+    ''',
 )

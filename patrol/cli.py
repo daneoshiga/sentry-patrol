@@ -17,7 +17,7 @@ def cli():
 def events(organization, project_name):
     click.secho('events for {}'.format(project_name))
     for event in patrol.events(organization, project_name):
-        click.echo('{e[eventID]}: {e[message]}'.format(e=event))
+        click.echo('{eventID}: {message}'.format(**event))
 
 
 @cli.command(help='Lists project issues')
@@ -26,4 +26,4 @@ def events(organization, project_name):
 def issues(organization, project_name):
     click.secho('issues for {}'.format(project_name))
     for issue in patrol.issues(organization, project_name):
-        click.echo('{i[id]}: {i[title]}'.format(i=issue))
+        click.echo('{id}: {title}'.format(**issue))

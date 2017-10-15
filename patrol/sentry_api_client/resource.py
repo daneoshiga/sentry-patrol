@@ -1,4 +1,4 @@
-from simple_rest_client.resource import Resource, AsyncResource
+from simple_rest_client.resource import Resource
 
 
 class ProjectEvents(Resource):

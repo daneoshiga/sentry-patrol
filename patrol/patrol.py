@@ -9,25 +9,19 @@ class Patrol:
         self.api = get_api_instance(sentry_api_token, timeout)
 
     def events(self, organization, project):
-        all_events = []
         events = self.api.project_events.list(organization, project)
-        all_events.extend(events.body)
+        yield from events.body
 
         links = parse_header_links(events.headers.get('Link'))
         while links[1]['results'] == 'true':
             events = self.api.project_events.list(organization, project)
-            all_events.extend(events.body)
-
-        return all_events
+            yield from events.body
 
     def issues(self, organization, project):
-        all_issues = []
         issues = self.api.project_issues.list(organization, project)
-        all_issues.extend(issues.body)
+        yield from issues.body
 
         links = parse_header_links(issues.headers.get('Link'))
         while links[1]['results'] == 'true':
             issues = self.api.project_issues.list(organization, project)
-            all_issues.extend(issues.body)
-
-        return all_issues
+            yield from issues.body

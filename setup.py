@@ -114,5 +114,10 @@ setup(
         'version': VersionCommand,
     },
     setup_requires=['pytest-runner'],
+    install_requires=[
+        'click>=6.7,<6.8',
+        'prettyconf',
+        'simple-rest-client>=0.3.0,<1.0.0',
+    ],
     tests_require=['pytest', 'pytest-cov'],
 )

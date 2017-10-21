@@ -1,6 +1,12 @@
 Changelog
 ~~~~~~~~~
 
+0.0.3
+-----
+
+* Add dependencies to setup.py install_requires
+* Fix typo on __init__.py file
+
 0.0.2
 -----
 

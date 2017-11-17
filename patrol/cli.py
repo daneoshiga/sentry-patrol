@@ -1,7 +1,8 @@
 import click
 
-from .config import SENTRY_API_TOKEN, ISSUE_STATUSES
-from .patrol import Patrol
+from patrol.config import SENTRY_API_TOKEN, ISSUE_STATUSES
+from patrol.patrol import Patrol
+from patrol.utils import print_json
 
 patrol = Patrol(SENTRY_API_TOKEN)
 
@@ -27,7 +28,7 @@ def events(organization, project_name):
 def event(organization, project_name, event_id):
     click.secho('event {} for {}'.format(event_id, project_name))
     event = patrol.event(organization, project_name, event_id)
-    click.echo('{eventID}: {message}'.format(**event))
+    print_json(event)
 
 
 @cli.command(help='Lists project issues')
@@ -43,7 +44,7 @@ def issues(organization, project_name):
 @click.argument('issue_id')
 def issue(issue_id):
     issue = patrol.issue(issue_id)
-    click.echo('{id}: {title} - {status}'.format(**issue))
+    print_json(issue)
 
 
 @cli.command(help='Update issue')

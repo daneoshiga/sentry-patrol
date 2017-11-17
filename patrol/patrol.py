@@ -29,7 +29,7 @@ class Patrol:
         return self._fetch_resources('project_events', organization, project)
 
     def event(self, organization, project, event_id):
-        return self.api.project_events.fetch('project_events', organization, project, event_id).body
+        return self.api.project_events.fetch(organization, project, event_id).body
 
     def issues(self, organization, project):
         return self._fetch_resources('project_issues', organization, project)

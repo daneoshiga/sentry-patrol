@@ -1,6 +1,12 @@
 Changelog
 ~~~~~~~~~
 
+0.1.1
+-----
+
+* Fix fetch event command
+* Use json output for fetch commands
+
 0.1.0
 -----
 

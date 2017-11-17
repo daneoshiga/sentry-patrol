@@ -1,6 +1,13 @@
 Changelog
 ~~~~~~~~~
 
+0.1.0
+-----
+
+* Add command to fetch issue
+* Add command to fetch event
+* Add command to update issue status
+
 0.0.4
 -----
 

@@ -1,25 +1,48 @@
 from unittest import mock
 
-import pytest
-from patrol.patrol import Patrol
+from patrol import cli
 
 
-@pytest.fixture
-def patrol():
-    patrol = Patrol('TOKEN')
-    patrol.api = mock.Mock()
-    return patrol
+@mock.patch('patrol.patrol.Patrol.events')
+def test_events(mock_events, cli_runner):
+    mock_events.return_value = []
+    result = cli_runner.invoke(cli.events, ['organization', 'project'])
+
+    assert result.exit_code == 0
+    assert mock_events.called
 
 
-def test_events(patrol):
-    events_mock = mock.Mock()
-    patrol.events = events_mock
-    patrol.events('organization', 'project')
-    assert events_mock.called
+@mock.patch('patrol.patrol.Patrol.event')
+def test_event(mock_event, cli_runner, event):
+    mock_event.return_value = event
+    result = cli_runner.invoke(cli.event, ['organization', 'project', 'event_id'])
+
+    assert result.exit_code == 0
+    assert mock_event.called
 
 
-def test_issues(patrol):
-    issues_mock = mock.Mock()
-    patrol.issues = issues_mock
-    patrol.issues('organization', 'project')
-    assert issues_mock.called
+@mock.patch('patrol.patrol.Patrol.issues')
+def test_issues(mock_issues, cli_runner):
+    mock_issues.return_value = []
+    result = cli_runner.invoke(cli.issues, ['organization', 'project'])
+
+    assert result.exit_code == 0
+    assert mock_issues.called
+
+
+@mock.patch('patrol.patrol.Patrol.issue')
+def test_issue(mock_issue, cli_runner, issue):
+    mock_issue.return_value = issue
+    result = cli_runner.invoke(cli.issue, ['issue_id'])
+
+    assert result.exit_code == 0
+    assert mock_issue.called
+
+
+@mock.patch('patrol.patrol.Patrol.update_issue')
+def test_update_issue(mock_issue, cli_runner, issue):
+    mock_issue.return_value = issue
+    result = cli_runner.invoke(cli.update_issue_status, ['issue_id', '--status', 'unresolved'])
+
+    assert result.exit_code == 0
+    assert mock_issue.called

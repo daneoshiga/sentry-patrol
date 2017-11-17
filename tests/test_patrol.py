@@ -42,7 +42,7 @@ def test_issue(mock_issue, cli_runner, issue):
 @mock.patch('patrol.patrol.Patrol.update_issue')
 def test_update_issue(mock_issue, cli_runner, issue):
     mock_issue.return_value = issue
-    result = cli_runner.invoke(cli.update_issue_status, ['issue_id', 'unresolved'])
+    result = cli_runner.invoke(cli.issue, ['issue_id', '--status', 'unresolved'])
 
     assert result.exit_code == 0
     assert mock_issue.called

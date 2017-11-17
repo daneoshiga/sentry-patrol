@@ -69,4 +69,4 @@ This command update an issues status. It can be used as follows:
 
 .. code:: bash
 
-    patrol update_issue_status <issue-id> <status>
+    patrol issue --status <status> <issue-id>

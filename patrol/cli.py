@@ -41,11 +41,15 @@ def issues(organization, project_name):
 
 @cli.command(help='Retrive issue')
 @click.argument('issue_id')
+def issue(issue_id):
+    issue = patrol.issue(issue_id)
+    click.echo('{id}: {title} - {status}'.format(**issue))
+
+
+@cli.command(help='Update issue')
+@click.argument('issue_id')
 @click.option('--status', type=click.Choice(ISSUE_STATUSES))
-def issue(issue_id, status):
-    if not status:
-        issue = patrol.issue(issue_id)
-    else:
-        data = {'status': status}
-        issue = patrol.update_issue(issue_id, data)
+def update_issue_status(issue_id, status):
+    data = {'status': status}
+    issue = patrol.update_issue(issue_id, data)
     click.echo('{id}: {title} - {status}'.format(**issue))

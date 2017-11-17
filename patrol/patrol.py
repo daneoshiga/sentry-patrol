@@ -1,4 +1,4 @@
-from requests.utils import parse_header_links
+import requests
 
 from .sentry_api_client.api import get_api_instance
 
@@ -6,28 +6,27 @@ from .sentry_api_client.api import get_api_instance
 class Patrol:
 
     def __init__(self, sentry_api_token, timeout=None):
+        self.headers = {
+            'Authorization': 'Bearer {}'.format(sentry_api_token)
+        }
+        self.timeout = timeout
         self.api = get_api_instance(sentry_api_token, timeout)
 
+    def _fetch_resources(self, endpoint, organization, project):
+        endpoint = getattr(self.api, endpoint)
+        method = getattr(endpoint, 'list')
+
+        resources = method(organization, project)
+        yield from resources.body
+
+        next_link = resources.client_response.links['next']
+        while next_link['results'] == 'true':
+            response = requests.get(next_link['url'], timeout=self.timeout, headers=self.headers)
+            yield from response.json()
+            next_link = response.links['next']
+
     def events(self, organization, project):
-        all_events = []
-        events = self.api.project_events.list(organization, project)
-        all_events.extend(events.body)
-
-        links = parse_header_links(events.headers.get('Link'))
-        while links[1]['results'] == 'true':
-            events = self.api.project_events.list(organization, project)
-            all_events.extend(events.body)
-
-        return all_events
+        return self._fetch_resources('project_events', organization, project)
 
     def issues(self, organization, project):
-        all_issues = []
-        issues = self.api.project_issues.list(organization, project)
-        all_issues.extend(issues.body)
-
-        links = parse_header_links(issues.headers.get('Link'))
-        while links[1]['results'] == 'true':
-            issues = self.api.project_issues.list(organization, project)
-            all_issues.extend(issues.body)
-
-        return all_issues
+        return self._fetch_resources('project_issues', organization, project)

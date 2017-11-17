@@ -19,3 +19,9 @@ class Issues(Resource):
         'fetch': {'method': 'GET', 'url': 'issues/{}/'},
         'update': {'method': 'PUT', 'url': 'issues/{}/'},
     }
+
+
+class Projects(Resource):
+    actions = {
+        'list': {'method': 'GET', 'url': 'organizations/{}/projects/'},
+    }

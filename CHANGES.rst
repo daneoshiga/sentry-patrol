@@ -1,6 +1,11 @@
 Changelog
 ~~~~~~~~~
 
+0.2.0
+-----
+
+* Add command to list projects
+
 0.1.1
 -----
 

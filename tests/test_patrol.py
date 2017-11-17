@@ -46,3 +46,12 @@ def test_update_issue(mock_issue, cli_runner, issue):
 
     assert result.exit_code == 0
     assert mock_issue.called
+
+
+@mock.patch('patrol.patrol.Patrol.projects')
+def test_projects(mock_projects, cli_runner):
+    mock_projects.return_value = []
+    result = cli_runner.invoke(cli.projects, ['organization'])
+
+    assert result.exit_code == 0
+    assert mock_projects.called

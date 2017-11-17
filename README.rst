@@ -34,6 +34,16 @@ For a list of commands and options, check the help output with:
     patrol --help
 
 
+Organization
+~~~~~~~~~~~~
+
+This command lists projects for a given organization. It can be used as follows:
+
+.. code:: bash
+
+    patrol projects <org-name>
+
+
 Events
 ~~~~~~
 

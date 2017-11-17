@@ -10,7 +10,12 @@ class ProjectEvents(Resource):
 
 class ProjectIssues(Resource):
     actions = {
-        'fetch': {'method': 'GET', 'url': 'issues/{}/'},
         'list': {'method': 'GET', 'url': 'projects/{}/{}/issues/'},
+    }
+
+
+class Issues(Resource):
+    actions = {
+        'fetch': {'method': 'GET', 'url': 'issues/{}/'},
         'update': {'method': 'PUT', 'url': 'issues/{}/'},
     }

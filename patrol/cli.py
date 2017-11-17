@@ -26,7 +26,7 @@ def events(organization, project_name):
 @click.argument('event_id')
 def event(organization, project_name, event_id):
     click.secho('event {} for {}'.format(event_id, project_name))
-    event = patrol.events(organization, project_name, event_id)
+    event = patrol.event(organization, project_name, event_id)
     click.echo('{eventID}: {message}'.format(**event))
 
 

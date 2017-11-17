@@ -10,7 +10,7 @@ class ProjectEvents(Resource):
 
 class ProjectIssues(Resource):
     actions = {
-        'list': {'method': 'GET', 'url': 'projects/{}/{}/issues/'},
+        'list': {'method': 'GET', 'url': 'projects/{}/{}/issues/'}
     }
 
 

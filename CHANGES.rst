@@ -1,6 +1,12 @@
 Changelog
 ~~~~~~~~~
 
+0.0.4
+-----
+
+* Use generator on patrol
+* Fix pagination
+
 0.0.3
 -----
 

@@ -3,7 +3,7 @@ from simple_rest_client.resource import Resource
 
 class ProjectEvents(Resource):
     actions = {
-        'fetch': {'method': 'GET', 'url': 'projects/{}/{}/events/{}'},
+        'fetch': {'method': 'GET', 'url': 'projects/{}/{}/events/{}/'},
         'list': {'method': 'GET', 'url': 'projects/{}/{}/events/'}
     }
 

@@ -41,4 +41,4 @@ class Patrol:
         return self.api.issues.update(issue_id, body=data).body
 
     def projects(self, organization):
-        return self.api.projects.list(organization).body
+        return self._fetch_resources('projects', organization, None)

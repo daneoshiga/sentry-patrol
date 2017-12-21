@@ -54,3 +54,10 @@ def update_issue_status(issue_id, status):
     data = {'status': status}
     issue = patrol.update_issue(issue_id, data)
     click.echo('{id}: {title} - {status}'.format(**issue))
+
+
+@cli.command(help="Lists organization's project")
+@click.argument('organization')
+def projects(organization):
+    for project in patrol.projects(organization):
+        click.echo('{name}'.format(**project))

@@ -14,3 +14,6 @@ ipdb = "*"
 "simple-rest-client" = "*"
 prettyconf = "*"
 click = "*"
+
+[requires]
+python_full_version="3.7.3"

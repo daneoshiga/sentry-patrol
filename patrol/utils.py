@@ -1,6 +1,7 @@
-import click
 import decimal
 import json
+
+import click
 
 
 def json_encode_decimal(obj):

@@ -102,16 +102,12 @@ setup(
         "Natural Language :: English",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
         "Topic :: System :: Distributed Computing",
     ],
     cmdclass={"upload": UploadCommand, "version": VersionCommand},
     setup_requires=["pytest-runner"],
-    install_requires=[
-        "click>=6.7,<6.8",
-        "prettyconf",
-        "simple-rest-client>=0.3.0,<1.0.0",
-    ],
+    install_requires=["click>=6.7,<6.8", "prettyconf", "simple-rest-client>=1.0.0"],
     tests_require=["pytest", "pytest-cov"],
 )

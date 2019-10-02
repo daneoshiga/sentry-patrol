@@ -1,19 +1,17 @@
 [[source]]
 url = "https://pypi.python.org/simple"
 verify_ssl = true
+
 [dev-packages]
-
-pytest = "*"
 ipdb = "*"
-"pytest-cov" = "*"
-
-
+pre-commit = "*"
+pytest = "*"
+pytest-cov = "*"
 
 [packages]
-
-"simple-rest-client" = "*"
-prettyconf = "*"
 click = "*"
+prettyconf = "*"
+simple-rest-client = "*"
 
 [requires]
-python_full_version="3.7.3"
+python_full_version="3.7.4"

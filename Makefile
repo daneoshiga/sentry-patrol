@@ -22,6 +22,7 @@ clean-pyc:
 	find . -name '__pycache__' -exec rm -fr {} +
 
 lint:
+	SKIP=no-commit-to-branch pre-commit run -a -v
 	flake8 patrol tests
 
 test:

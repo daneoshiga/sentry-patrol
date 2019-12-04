@@ -1,6 +1,12 @@
 Changelog
 ~~~~~~~~~
 
+1.0.0
+-----
+
+* Update simple-rest-client version
+* Drop python 3.5 support
+
 0.2.0
 -----
 
